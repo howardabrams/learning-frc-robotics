@@ -1,19 +1,18 @@
-package org.geeklet.machines;
+package org.geeklet.machines.support;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 
 /**
  * A robot that implements
  *
  */
 public class SimpleRobot implements IRobot {
-    int x = 0;
-    int y = 0;
-    int direction = 0;
-    
+    public int x = 0;
+    public int y = 0;
+    public int direction = 0;
+
     public Color c = new Color(220, 0, 240);
-    
+
     /**
      * Draws a generic, quite boring robot.
      */
@@ -21,10 +20,10 @@ public class SimpleRobot implements IRobot {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        
+
         g2d.translate(x, y);
         g2d.rotate(Math.toRadians(direction));
-        
+
         int width = 20;
         int height = 15;
 

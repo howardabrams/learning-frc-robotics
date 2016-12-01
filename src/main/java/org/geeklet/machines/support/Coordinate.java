@@ -1,4 +1,4 @@
-package org.geeklet.machines;
+package org.geeklet.machines.support;
 
 /**
  * An class to hold an X,Y coordinate position on the field.

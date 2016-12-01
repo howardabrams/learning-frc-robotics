@@ -1,4 +1,4 @@
-package org.geeklet.machines;
+package org.geeklet.machines.support;
 
 /**
  * A representation of a ball.
@@ -6,7 +6,7 @@ package org.geeklet.machines;
 public class Ball {
 	int x;
 	int y;
-	boolean held;
+	public boolean held;
 
 	/**
 	 * Constructor for a Ball object on a field. Assumes that the ball is not

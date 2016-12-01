@@ -1,5 +1,10 @@
 package org.geeklet.machines;
 
+import org.geeklet.machines.support.Ball;
+import org.geeklet.machines.support.Field;
+import org.geeklet.machines.support.Sensor;
+import org.geeklet.machines.support.SimpleRobot;
+
 /**
  * A definition for a generic Robot FSM (State Machine)
  */

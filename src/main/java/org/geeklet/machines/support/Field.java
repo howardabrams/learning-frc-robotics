@@ -1,6 +1,9 @@
-package org.geeklet.machines;
+package org.geeklet.machines.support;
 
 import java.util.List;
+
+import org.geeklet.machines.Robot;
+
 import java.util.ArrayList;
 import java.awt.*;
 import java.awt.event.*;
@@ -91,7 +94,7 @@ public class Field extends Frame {
      * @return A {@link Ball} at the coordinates of the specified robot, or
      *         <code>null</code> otherwise.
      */
-    Ball ballAt(IRobot robot) {
+    public Ball ballAt(IRobot robot) {
         return ballAt(robot.getX(), robot.getY());
     }
 

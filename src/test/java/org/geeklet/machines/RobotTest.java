@@ -5,11 +5,11 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import static org.mockito.Mockito.*;
 
-import org.geeklet.machines.Ball;
-import org.geeklet.machines.Field;
 import org.geeklet.machines.Robot;
-import org.geeklet.machines.Sensor;
 import org.geeklet.machines.Robot.Event;
+import org.geeklet.machines.support.Ball;
+import org.geeklet.machines.support.Field;
+import org.geeklet.machines.support.Sensor;
 
 /**
  * Unit test for simple App.

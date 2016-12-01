@@ -1,7 +1,9 @@
 /*
  * (c) 2016, Pigmice
  */
-package org.geeklet.machines;
+package org.geeklet.machines.support;
+
+import org.geeklet.machines.Robot;
 
 /**
  * An interface between a Robot and the field of balls.
@@ -57,7 +59,7 @@ public class Sensor {
 	 * @return distance, in paces, of a ball that is front of the robot, or -1
 	 *         if no ball is seen.
 	 */
-	int ballDistance() {
+	public int ballDistance() {
 		for (int d = 0; d < 30; d++) { // distance (looking forward 30 units)
 			for (Ball ball : field.balls) {
 				Coordinate position = coordinateInFront(d);

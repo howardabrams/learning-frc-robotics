@@ -1,4 +1,4 @@
-package org.geeklet.machines;
+package org.geeklet.machines.support;
 
 import java.awt.Graphics;
 
