@@ -86,21 +86,36 @@ public abstract class Field extends Frame {
 	
 
 	/**
-	 * Compute a random place on the field, that isn't exactly on the border.
+	 * Compute a random place on the field.
 	 * @return A random number between 0 and WIDTH ... about.
 	 */
-	int randomX() {
+	public int randomX() {
 		return MagicSpells.randomInt(width);
 	}
 
 	/**
-	 * Compute a random y coordinate on the field, that isn't exactly on the border.
+	 * Compute a random y coordinate on the field.
 	 * @return A random number between 0 and HEIGHT ... about, as it will take into consideration the TOPEDGE value.
 	 */
-	int randomY() {
+	public int randomY() {
 		return MagicSpells.randomInt(height);
 	}
 
+	/**
+	 * @return A random place on the field formatted as a coordinate. Pull the pieces out in your code with something like: <code>Coordinate place = field.random();
+	 * x = place.x;</code>
+	 */
+	public Coordinate randomCoordinate() {
+		return new Coordinate(randomX(), randomY());
+	}
+	
+	/**
+	 * @return A coordinate position in the center of the field.
+	 */
+	public Coordinate centerField() {
+		return new Coordinate(width/2, height/2);
+	}
+	
 	protected void addFieldObject(FieldObject obj) {
 		objects.add(obj);
 	}
