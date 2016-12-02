@@ -1,10 +1,13 @@
-Let's make some robotic state machines, and have it run an automated
-course similar to last year's Bunnybot project.
+Learning Java with Robots
+=========================
 
-In this game, a robot will need to look around and find a ball. When
-it does, it goes over to it, picks it up, and carries it to one side
-of the field (the end zone).
+This project, and the accompanying documentation is designed for high
+school freshmen and middle school students who are interested in
+learning the Java programming language so that they can eventually
+participate in a FIRST Robotic Competition.
 
-Right now, its behavior and actions are displayed with messages in the
-console, but we should probably make a nice top-down graphical view of
-the game...but let's do that later.
+This project will *not* teach enterprise-level Java (and currently,
+does not teach the RoboRIO's Java-specific library, WPI). This will
+help to teach how to write *robotic* state machines, and have it run
+an automated fashion on a game field, rendered in a top-down,
+two-dimensional graphical frame.
