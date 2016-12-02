@@ -1,0 +1,31 @@
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
+
+# Permalinks
+permalink:        pretty
+relative_permalinks: true
+
+# Setup
+title: j/r
+tagline: Learning Java for FRC Robotics
+email: howardabrams@gmail.com
+description: >
+  <b>Learn Java by Doing.</b> <br/>
+  A mini-book and project to teach <i>just enough Java</i> to program
+  robots for FIRST Robotic Competitions.
+
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://howardabrams.github.io/learning-frc-robotics/"
+baseurl:          /
+twitter_username: howardabrams
+github_username:  howardabrams
+
+author:
+  name:           'Howard Abrams'
+  url:            http://www.howardism.org/
+
+paginate:         50
+
+github:
+  repo:           https://github.com/howardabrams/learning-frc-robotics
