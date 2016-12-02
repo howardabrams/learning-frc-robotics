@@ -2,8 +2,6 @@ package org.geeklet.machines.support;
 
 import java.lang.reflect.Field;
 
-import stuff.ExampleFullField;
-
 /**
  * Contains static helper functions that should not be viewed.
  */
