@@ -12,7 +12,7 @@ import org.geeklet.machines.support.sensors.ISensor;
  */
 public abstract class Robot implements DrawableRobot {
     public Color c = new Color(220, 0, 240);
-    List<ISensor> sensors = new LinkedList<ISensor>();
+    protected List<ISensor> sensors = new LinkedList<ISensor>();
     
     public List<ISensor> getSensors() {
     		return sensors;

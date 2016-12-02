@@ -3,9 +3,14 @@
  */
 package org.geeklet.machines.support.sensors;
 
+import java.awt.Point;
+import java.awt.Rectangle;
+
 import org.geeklet.machines.support.DrawableRobot;
 import org.geeklet.machines.support.Field;
 import org.geeklet.machines.support.IRobot;
+import org.geeklet.machines.support.objects.FieldObject;
+import org.geeklet.machines.support.objects.IFieldObject;
 
 /**
  * @author howard.abrams
@@ -28,10 +33,27 @@ public class UltraSonic extends DirectionalSensor {
 	 */
 	@Override
 	public boolean triggered() {
-		// TODO Auto-generated method stub
+		int x = attachedTo.getX();
+		int y = attachedTo.getY();
+		int d = attachedTo.getDirection() + direction;
+		double rads = Math.toRadians(d);
+
+		for (FieldObject o : playingField.getFieldObjects()) {
+			for (int a = 0; a < RANGE; a++) {
+				int vx = (int) (x + Math.cos(rads) * a);
+				int vy = (int) (y + Math.sin(rads) * a);
+				if (isIn(vx, vy, o.x, o.y, o.width, o.height)) {
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 
+	boolean isIn(int vx, int vy, int x, int y, int width, int height) {
+		final Rectangle o = new Rectangle(x, y, width, height);
+		return o.contains(vx, vy);
+	}
 	@Override
 	public void addField(Field field) {
 		playingField = field;

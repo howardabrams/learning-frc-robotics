@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.geeklet.machines.support.objects.FieldObject;
 import org.geeklet.machines.support.objects.IFieldObject;
 import org.geeklet.machines.support.sensors.ISensor;
 
@@ -16,7 +17,7 @@ public abstract class Field extends Frame {
 	public int height;
 
 	List<DrawableRobot> robots = new LinkedList<DrawableRobot>();
-	List<IFieldObject> objects = new LinkedList<IFieldObject>();
+	List<FieldObject> objects = new LinkedList<FieldObject>();
 	
 	public Field(String gameName) {
 		this(gameName, 400, 300);
@@ -100,7 +101,11 @@ public abstract class Field extends Frame {
 		return MagicSpells.randomInt(height);
 	}
 
-	protected void addFieldObject(IFieldObject obj) {
+	protected void addFieldObject(FieldObject obj) {
 		objects.add(obj);
+	}
+	
+	public List<FieldObject> getFieldObjects() {
+		return objects;
 	}
 }

@@ -1,10 +1,10 @@
 package org.geeklet.machines.support.objects;
 
 public abstract class FieldObject implements IFieldObject {
-	int x;
-	int y;
-	int width;
-	int height;
+	public int x;
+	public int y;
+	public int width;
+	public int height;
 
 	public FieldObject(int x, int y, int width, int height) {
 		this.x = x;

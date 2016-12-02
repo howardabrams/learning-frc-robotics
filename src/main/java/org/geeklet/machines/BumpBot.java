@@ -25,8 +25,11 @@ public class BumpBot extends Robot {
 
 	@Override
 	public void step() {
-		turn(3);
-		move(3);
+		UltraSonic onlySensor = (UltraSonic) sensors.get(0);
+		if (!onlySensor.triggered()) {
+			turn(3);
+			move(3);
+		}
 	}
 
 	/**
