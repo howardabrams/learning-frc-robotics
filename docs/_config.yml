@@ -16,8 +16,8 @@ description: >
   robots for FIRST Robotic Competitions.
 
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://howardabrams.github.io/learning-frc-robotics/"
-baseurl:          /
+url: "https://www.geeklet.org/java/"
+baseurl:          /java/
 twitter_username: howardabrams
 github_username:  howardabrams
 

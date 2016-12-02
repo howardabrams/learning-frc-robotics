@@ -1,0 +1,3 @@
+rm -rf _site
+jekyll build
+rsync -avz _site/* $USER@geeklet.org:geeklet/java
