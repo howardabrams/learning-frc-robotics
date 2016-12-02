@@ -17,4 +17,3 @@ A Member of any programming team should be able to do the following:
 
 [11]: ../11-eclipse.md
 [12]: ../12-unit-test.md
-[13]: ../
