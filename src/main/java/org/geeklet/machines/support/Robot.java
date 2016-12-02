@@ -1,6 +1,10 @@
 package org.geeklet.machines.support;
 
 import java.awt.*;
+import java.util.LinkedList;
+import java.util.List;
+
+import org.geeklet.machines.support.sensors.ISensor;
 
 /**
  * A robot that implements
@@ -8,12 +12,20 @@ import java.awt.*;
  */
 public abstract class Robot implements DrawableRobot {
     public Color c = new Color(220, 0, 240);
-
+    List<ISensor> sensors = new LinkedList<ISensor>();
+    
+    public List<ISensor> getSensors() {
+    		return sensors;
+    }
+    
+    public void addSensor(ISensor sensor) {
+    		sensors.add(sensor);
+    }
+    
     /**
      * Draws a generic, quite boring robot.
      */
     public void paint(Graphics g) {
-    		System.out.println("Draw a robot");
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);

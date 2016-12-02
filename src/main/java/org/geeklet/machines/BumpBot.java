@@ -1,26 +1,26 @@
 /**
- * For the purposes of our learning, a Robot has a few fields:
- * 
- *     Coordinates that are labeled `x` and `y`
- *     Direction labeled `direction`
  * 
  */
 package org.geeklet.machines;
 
 import org.geeklet.machines.support.Robot;
+import org.geeklet.machines.support.sensors.UltraSonic;
 
 /**
+ * @author howard.abrams
  *
  */
-public class SimpleRobot extends Robot {
+public class BumpBot extends Robot {
 	public int x;
 	public int y;
 	public int direction;
 
-	public SimpleRobot(int x, int y, int direction) {
+	public BumpBot(int x, int y, int direction) {
 		this.x = x;
 		this.y = y;
 		this.direction = direction;
+		
+		addSensor(new UltraSonic(direction));
 	}
 
 	@Override
@@ -56,5 +56,4 @@ public class SimpleRobot extends Robot {
 			direction = 360 + direction;
 		}
 	}
-	
 }

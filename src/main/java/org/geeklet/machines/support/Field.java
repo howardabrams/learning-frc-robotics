@@ -7,13 +7,17 @@ import java.awt.event.WindowEvent;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.geeklet.machines.support.objects.IFieldObject;
+import org.geeklet.machines.support.sensors.ISensor;
+
 @SuppressWarnings("serial")
 public abstract class Field extends Frame {
 	public int width; // width and height of field area
 	public int height;
 
 	List<DrawableRobot> robots = new LinkedList<DrawableRobot>();
-
+	List<IFieldObject> objects = new LinkedList<IFieldObject>();
+	
 	public Field(String gameName) {
 		this(gameName, 400, 300);
 	}
@@ -39,12 +43,37 @@ public abstract class Field extends Frame {
 
 	public void addRobot(DrawableRobot robot) {
 		robots.add(robot);
+		for (ISensor sensor : robot.getSensors()) {
+			sensor.addField(this);
+			sensor.addRobot(robot);
+		}
 	}
 
-	abstract public void runGame();
-
+	public void runGame() {
+		while(true) {
+			for(DrawableRobot robot : robots) {
+				robot.step();
+				this.repaint();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+				}
+			}
+		}
+	}
+	
 	abstract public void paint(Graphics g);
 	
+	public void paintAll(Graphics g) {
+		for (IFieldObject obj : objects) {
+			if (obj != null)
+				obj.paint(g);
+		}
+		for (DrawableRobot robot : robots) {
+			if (robot != null)
+				robot.paint(g);
+		}
+	}
 	/**
 	 * @param x the X coordinate of a position on the field
 	 * @param y the Y coordinate of a position on the field
@@ -69,5 +98,9 @@ public abstract class Field extends Frame {
 	 */
 	int randomY() {
 		return MagicSpells.randomInt(height);
+	}
+
+	protected void addFieldObject(IFieldObject obj) {
+		objects.add(obj);
 	}
 }
