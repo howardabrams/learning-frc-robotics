@@ -6,23 +6,20 @@ import java.awt.*;
  * A robot that implements
  *
  */
-public class SimpleRobot implements IRobot {
-    public int x = 0;
-    public int y = 0;
-    public int direction = 0;
-
+public abstract class Robot implements DrawableRobot {
     public Color c = new Color(220, 0, 240);
 
     /**
      * Draws a generic, quite boring robot.
      */
     public void paint(Graphics g) {
+    		System.out.println("Draw a robot");
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 
-        g2d.translate(x, y);
-        g2d.rotate(Math.toRadians(direction));
+        g2d.translate(getX(), getY());
+        g2d.rotate(Math.toRadians(getDirection()));
 
         int width = 20;
         int height = 15;
@@ -42,30 +39,17 @@ public class SimpleRobot implements IRobot {
     /**
      * While many robots would actually move, any robot that doesn't override this method, will be essentially broken.
      */
-    public void go() {
-    }
+    public abstract void step();
 
     public int getX() {
-        return x;
-    }
+		return MagicSpells.getMagicInteger(this, "x");
+	}
 
-    public int getY() {
-        return y;
+	public int getY() {
+		return MagicSpells.getMagicInteger(this, "y");
     }
 
     public int getDirection() {
-        return direction;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public void setDirection(int d) {
-        this.direction = d;
+		return MagicSpells.getMagicInteger(this, "direction");
     }
 }
