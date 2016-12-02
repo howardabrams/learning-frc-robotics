@@ -1,67 +1,93 @@
-/**
- * 
+/*
+ * Basic sensor that emulates a short-range ultrasonic electrical
+ * sensor.
  */
 package org.geeklet.machines.support.sensors;
 
-import java.awt.Point;
 import java.awt.Rectangle;
 
-import org.geeklet.machines.support.DrawableRobot;
 import org.geeklet.machines.support.Field;
 import org.geeklet.machines.support.IRobot;
 import org.geeklet.machines.support.objects.FieldObject;
-import org.geeklet.machines.support.objects.IFieldObject;
 
 /**
- * @author howard.abrams
- *
+ * A sensor that gets a list of field objects from the field, and
+ * looks in a particular direction (relative to the robot's
+ * direction), and its {@link #triggered} returns true if an object is
+ * immediately in front.
  */
 public class UltraSonic extends DirectionalSensor {
-	int RANGE = 20;
-	Field playingField;
-	IRobot attachedTo;
-	
-	/**
-	 * 
-	 */
-	public UltraSonic(int direction) {
-		this.direction = direction;
-	}
+    /** Constant value of the number of pixels to scan in front for an object. */
+    int RANGE = 30;
 
-	/* (non-Javadoc)
-	 * @see org.geeklet.machines.support.sensors.iSensor#triggered()
-	 */
-	@Override
-	public boolean triggered() {
-		int x = attachedTo.getX();
-		int y = attachedTo.getY();
-		int d = attachedTo.getDirection() + direction;
-		double rads = Math.toRadians(d);
+    /** Reference to the field that the robot is attached to. */
+    Field playingField;
 
-		for (FieldObject o : playingField.getFieldObjects()) {
-			for (int a = 0; a < RANGE; a++) {
-				int vx = (int) (x + Math.cos(rads) * a);
-				int vy = (int) (y + Math.sin(rads) * a);
-				if (isIn(vx, vy, o.x, o.y, o.width, o.height)) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+    /** Reference to the robot that this sensor is attached to. */
+    IRobot attachedTo;
 
-	boolean isIn(int vx, int vy, int x, int y, int width, int height) {
-		final Rectangle o = new Rectangle(x, y, width, height);
-		return o.contains(vx, vy);
-	}
-	@Override
-	public void addField(Field field) {
-		playingField = field;
-	}
+    /**
+     * Constructor that takes the relative sensor direction.
+     * @param direction of the sensor in relation to the Robot it is
+     * attached to. 0 degrees points to the front of the robot.
+     */
+    public UltraSonic(int direction) {
+        this.direction = direction;
+    }
 
-	@Override
-	public void addRobot(IRobot robot) {
-		attachedTo = robot;
-	}
+    /**
+     * @return <code>true</code> if a field object is directly in
+     * front of this sensor up to the {@link RANGE}.
+     */
+    @Override
+    public boolean triggered() {
+        int x = attachedTo.getX();
+        int y = attachedTo.getY();
+        int d = attachedTo.getDirection() + direction;
+        double rads = Math.toRadians(d);
 
+        for (FieldObject o : playingField.getFieldObjects()) {
+            for (int a = 0; a < RANGE; a++) {
+                int vx = (int) (x + Math.cos(rads) * a);
+                int vy = (int) (y + Math.sin(rads) * a);
+                if (isIn(vx, vy, o.x, o.y, o.width, o.height)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Checks a <i>viewing coordinate</i> with a rectangle of a
+     * particular object.
+     * @param vx      <code>x</code> coordinate of a viewing coordinate
+     * @param vy      <code>y</code> coordinate of a viewing coordinate
+     * @param x       <code>x</code> coordinate of an object's rectangle
+     * @param y       <code>y</code> coordinate of an object's rectangle
+     * @param width   of an object
+     * @param height  of an object
+     * @return <code>true</code> if the viewing coordinate is within
+     * the rectangle specified by the parameters.
+     */
+    boolean isIn(int vx, int vy, int x, int y, int width, int height) {
+        final Rectangle o = new Rectangle(x, y, width, height);
+        return o.contains(vx, vy);
+    }
+
+    /**
+     * Stores a reference to the field the sensor will be viewing.
+     */
+    @Override
+    public void addField(Field field) {
+        playingField = field;
+    }
+
+    /**
+     * Stores a reference to the robot that this sensor is attached.
+     */
+    @Override
+    public void addRobot(IRobot robot) {
+        attachedTo = robot;
+    }
 }
