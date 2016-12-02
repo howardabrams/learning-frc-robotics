@@ -15,7 +15,6 @@ description: >
   A mini-book and project to teach <i>just enough Java</i> to program
   robots for FIRST Robotic Competitions.
 
-baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://www.geeklet.org/java/"
 baseurl:          /java/
 twitter_username: howardabrams
