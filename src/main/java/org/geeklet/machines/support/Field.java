@@ -1,7 +1,11 @@
+/*
+ * The Graphics machinery that is shared by all fields in order to render the state of a game.
+ */
 package org.geeklet.machines.support;
 
 import java.awt.Frame;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.LinkedList;
@@ -10,17 +14,24 @@ import java.util.List;
 import org.geeklet.machines.support.objects.FieldObject;
 import org.geeklet.machines.support.objects.IFieldObject;
 import org.geeklet.machines.support.sensors.ISensor;
+import org.geeklet.machines.support.sensors.UltraSonic;
 
+/**
+ * A Field is a graphics frame that draws the state of a game, including calling the mechanism for each 
+ * {@link FieldObject} and {@link DrawableRobot} to render itself in the field of view. 
+ */
 @SuppressWarnings("serial")
 public abstract class Field extends Frame {
-	public int width; // width and height of field area
+	/** The width of the field in rendered Java2D pixels, which we call units. */
+	public int width;
+	/** The height of the field in rendered Java2D pixels, which we call units. */
 	public int height;
 
 	List<DrawableRobot> robots = new LinkedList<DrawableRobot>();
 	List<FieldObject> objects = new LinkedList<FieldObject>();
 	
 	public Field(String gameName) {
-		this(gameName, 400, 300);
+		this(gameName, 400, 400);
 	}
 
 	public Field(String gameName, int width, int height) {
@@ -75,6 +86,45 @@ public abstract class Field extends Frame {
 				robot.paint(g);
 		}
 	}
+	
+	/**
+	 * Place an field object on the field, which adds it to its list.
+	 * @param obj some field object with its coordinates and size
+	 */
+	protected void addFieldObject(FieldObject obj) {
+		objects.add(obj);
+	}
+	
+	/**
+	 * @return list of objects currently placed on the field.
+	 */
+	public List<FieldObject> getFieldObjects() {
+		return objects;
+	}
+	
+	/**
+	 * Predicate function that check if a point is within any object on the field.
+	 * @param vx  X coordinate of a point on the field.
+	 * @param vy  Y coordinate of a point on the field.
+	 * @return  <code>true</code> if the given position is inside the area of any object on the field
+	 */
+	public boolean insideAnyObject(int x, int y) {
+		return insideAnyObject(new Point(x, y));
+	}
+	
+	/**
+	 * Predicate function that check if a point is within any object on the field.
+	 * @param p A particular point on the field
+	 * @return  <code>true</code> if the given position is inside the area of any object on the field
+	 */
+	public boolean insideAnyObject(Point p) {
+		for (FieldObject o : objects) {
+			if (o.inside(p))
+				return true;
+		}
+		return false;		
+	}
+	
 	/**
 	 * @param x the X coordinate of a position on the field
 	 * @param y the Y coordinate of a position on the field
@@ -114,13 +164,5 @@ public abstract class Field extends Frame {
 	 */
 	public Coordinate centerField() {
 		return new Coordinate(width/2, height/2);
-	}
-	
-	protected void addFieldObject(FieldObject obj) {
-		objects.add(obj);
-	}
-	
-	public List<FieldObject> getFieldObjects() {
-		return objects;
 	}
 }

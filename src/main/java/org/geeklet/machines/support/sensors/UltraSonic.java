@@ -8,7 +8,6 @@ import java.awt.Rectangle;
 
 import org.geeklet.machines.support.Field;
 import org.geeklet.machines.support.IRobot;
-import org.geeklet.machines.support.objects.FieldObject;
 
 /**
  * A sensor that gets a list of field objects from the field, and
@@ -17,11 +16,12 @@ import org.geeklet.machines.support.objects.FieldObject;
  * immediately in front.
  */
 public class UltraSonic extends DirectionalSensor {
-    /** Constant value of the number of pixels to scan in front for an object. */
+    /** Constant value of the number of pixels to scan in front for an
+     * object. */
     int RANGE = 30;
 
     /** Reference to the field that the robot is attached to. */
-    Field playingField;
+    public Field playingField;
 
     /** Reference to the robot that this sensor is attached to. */
     IRobot attachedTo;
@@ -46,14 +46,12 @@ public class UltraSonic extends DirectionalSensor {
         int d = attachedTo.getDirection() + direction;
         double rads = Math.toRadians(d);
 
-        for (FieldObject o : playingField.getFieldObjects()) {
-            for (int a = 0; a < RANGE; a++) {
-                int vx = (int) (x + Math.cos(rads) * a);
-                int vy = (int) (y + Math.sin(rads) * a);
-                if (isIn(vx, vy, o.x, o.y, o.width, o.height)) {
-                    return true;
-                }
-            }
+        for (int a = 0; a < RANGE; a++) {
+            int vx = (int) (x + Math.cos(rads) * a);
+            int vy = (int) (y + Math.sin(rads) * a);
+
+            if (playingField.insideAnyObject(vx, vy))
+                return true;
         }
         return false;
     }

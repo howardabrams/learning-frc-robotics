@@ -5,12 +5,12 @@
 package org.geeklet.machines;
 
 import org.geeklet.machines.support.Field;
-import org.geeklet.machines.support.FootballField;
+import org.geeklet.machines.support.ArenaField;
 import org.geeklet.machines.support.Robot;
 
 /**
  * The simplest game that adds the {@link MyBot} robot to the
- * {@link FootballField} field.
+ * {@link ArenaField} field.
  */
 public class MyGame {
     /**
@@ -21,7 +21,7 @@ public class MyGame {
      */
     public static void main(String[] args) {
         // The field takes a string that is used for the Window title.
-        Field field = new FootballField("My Fun Game");
+        Field field = new ArenaField("My Fun Game");
 
         // Create and place the robot on the "left" side of the field
         Robot myKit = new MyBot(10, 200, 0);

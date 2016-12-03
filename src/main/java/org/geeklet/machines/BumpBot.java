@@ -45,7 +45,7 @@ public class BumpBot extends Robot {
     public void step() {
         UltraSonic onlySensor = (UltraSonic) sensors.get(0);
         if (!onlySensor.triggered()) {
-            turn(2);
+            turn(1);
             move(3);
         }
     }

@@ -43,6 +43,6 @@ public class MyBot extends Robot {
      */
     @Override
     public void step() {
-        x += 2;
+        x = x + 1; // This could be written either: x += 1 or x++
     }
 }
