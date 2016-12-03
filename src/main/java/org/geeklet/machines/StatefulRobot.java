@@ -1,8 +1,8 @@
 package org.geeklet.machines;
 
 import org.geeklet.machines.support.DefaultRobot;
+import org.geeklet.machines.support.objects.Ball;
 
-import stuff.Ball;
 import stuff.ExampleFullField;
 import stuff.Sensor;
 

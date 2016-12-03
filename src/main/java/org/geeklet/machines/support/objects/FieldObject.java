@@ -1,7 +1,12 @@
 package org.geeklet.machines.support.objects;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Stroke;
 import java.awt.geom.Area;
 
 /**
@@ -14,7 +19,7 @@ public abstract class FieldObject implements IFieldObject {
      * as a list of rectangles. The constructor will guarantee
      * that we have at least one rectangle in this list.
      */
-    final Area area;
+    protected final Area area;
 
     /**
      * Constructor defines a single area represented by a width
@@ -129,4 +134,27 @@ public abstract class FieldObject implements IFieldObject {
     public boolean movable() {
         return false;
     }
+
+    /**
+     * A default mechanism to draw a field object's area in a
+     * particular color with a lighter border.
+     * @param g      The field frame's graphics context 
+     * @param color  An object's primary color
+     */
+	protected void defaultPaint(Graphics g, Color color) {
+		final Graphics2D g2 = (Graphics2D) g;
+		final Color sc = color.brighter();
+		final Stroke oldStroke = g2.getStroke();
+	
+		// Fill the resulting Area.
+		g2.setPaint(color);
+		g2.fill(area);
+	
+		// Draw the outline of the resulting Area.
+		g2.setStroke(new BasicStroke(1));
+		g2.setPaint(sc);
+		g2.draw(area);
+	
+		g2.setStroke(oldStroke);
+	}
 }

@@ -18,6 +18,9 @@ public class BumpBot extends Robot {
     /** The angle in degrees of the Robot's direction. */
     public int direction;
 
+    /** Our {@link UltraSonic} sensor that detects objects at close range. */
+    UltraSonic sonic;
+    
     /**
      * The typical constructor that takes the field coordinate
      * placement as well as the initial pointing direction.
@@ -33,7 +36,8 @@ public class BumpBot extends Robot {
         this.y = y;
         this.direction = direction;
 
-        addSensor(new UltraSonic(direction));
+        sonic = new UltraSonic(direction);
+        addSensor(sonic);
     }
 
     /**
@@ -43,8 +47,7 @@ public class BumpBot extends Robot {
      */
     @Override
     public void step() {
-        UltraSonic onlySensor = (UltraSonic) sensors.get(0);
-        if (!onlySensor.triggered()) {
+        if (!sonic.triggered()) {
             turn(1);
             move(3);
         }

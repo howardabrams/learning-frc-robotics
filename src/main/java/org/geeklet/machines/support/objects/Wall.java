@@ -1,5 +1,5 @@
-/**
- *
+/*
+ * A basic wall that can be extended with calls to parent class.
  */
 package org.geeklet.machines.support.objects;
 
@@ -7,13 +7,12 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.Stroke;
-import java.awt.geom.Area;
 
 /**
- * @author howard.abrams
- *
+ * A wall object sure looks like a rectangle, but it can also serve as
+ * a border blocking access... but only if a robot cares to pay
+ * attention and stop.
  */
 public class Wall extends FieldObject {
     /** The color of the wall defaults to a slimming black. */

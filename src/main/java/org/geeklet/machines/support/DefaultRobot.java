@@ -93,4 +93,26 @@ public class DefaultRobot extends Robot {
             direction = 360 + direction;
         }
     }
+    
+    /**
+     * Displays the Robot's name, position and direction.
+     */
+    public String toString() {
+    		String name = this.getClass().getSimpleName();
+        return String.format("%s Robot at (%d,%d) direction=%d", name, x, y, direction);
+    }
+
+    /**
+     * Wrapper around the console output that displays the current state as well
+     * as formats any of the arguments.
+     *
+     * @param format
+     *            The format string, see
+     *            {@link String#format(String, Object...)} for details.
+     * @param arguments
+     *            The arguments fed into the format string.
+     */
+    public void message(String format, Object... arguments) {
+        System.out.println(String.format(format, arguments));
+    }
 }
