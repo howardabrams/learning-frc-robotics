@@ -123,9 +123,44 @@ degrees, but calculated stuff in radians.
 Advanced Programing (for the win)
 -------------------
 
- * Git
- * Finite state machines I
- * Finite state machines II
+The point of the pages beforehand is to get to the really good stuff.
+
+### Git
+
+I figured that we could finally talk about Git and making commits and
+how that can be use to share code with the other teammates through
+Github. I guess this could also be somewhat optional, since during the
+Getting Started guide, we had them `clone`, but that was through
+Eclipse, and maybe not very Git-specific.
+
+### Sensing the World
+
+We should have a page that explains how to sense the field through
+*virtual sensors*, like the `UltraSonic` sensor.
+
+**Files:**
+
+  * `BumpBot.java`
+  * `BumpGame.java`
+
+### Finite state machines I
+
+We should have a Robot that turns *for a while* (maybe a random
+while), and then goes straight. Since the methods we should teach are
+`forward`, `turnLeft` and `turnRight` (see the difference between
+`BumpBot.java` and `BumpBot2.java`), they really can't do any
+long-term planning (like turn 50 degrees) without having a simple
+state that changes between *turning* and *moving*.
+
+### Finite state machines II
+
+The big article about FSM should use a `VisualTracker` sensor to
+locate balls.
+
+**Files:**
+
+  * `BallBot.java`
+  * `BallGame.java`
 
 Would Be Nice
 -------------
