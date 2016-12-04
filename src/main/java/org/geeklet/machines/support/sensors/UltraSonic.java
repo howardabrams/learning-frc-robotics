@@ -30,8 +30,8 @@ public class UltraSonic extends DirectionalSensor {
      */
     @Override
     public boolean triggered() {
-        int x = attachedTo.getX();
-        int y = attachedTo.getY();
+        float x = attachedTo.getX();
+        float y = attachedTo.getY();
         int d = attachedTo.getDirection() + direction;
         double rads = Math.toRadians(d);
 

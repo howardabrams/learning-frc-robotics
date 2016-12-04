@@ -24,7 +24,7 @@ public class MyGame {
         Field field = new ArenaField("My Fun Game");
 
         // Create and place the robot on the "left" side of the field
-        Robot myKit = new MyBot(10, 200, 0);
+        Robot myKit = new MyBot(60, 200, 0);
 
         field.addRobot(myKit);
 

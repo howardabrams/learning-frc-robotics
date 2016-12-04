@@ -8,8 +8,8 @@ import org.geeklet.machines.support.sensors.ISensor;
  * field must adhere.
  */
 public interface IRobot {
-    int getX();
-    int getY();
+    float getX();
+    float getY();
     int getDirection();
 
     void step();

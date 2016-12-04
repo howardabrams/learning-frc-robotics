@@ -16,7 +16,7 @@ import org.geeklet.machines.support.sensors.ISensor;
 public abstract class Robot implements DrawableRobot {
     public Color c = new Color(220, 0, 240);
     protected List<ISensor> sensors = new LinkedList<ISensor>();
-    
+
     /**
      * Draws a generic, quite boring robot.
      */
@@ -40,39 +40,39 @@ public abstract class Robot implements DrawableRobot {
 
         g2d.setColor(c);
         g2d.fillRect(-width/2, -height/2,
-                width + 6, height);   
+                     width + 6, height);
     }
-    
+
     /**
      * While many robots would actually move, any robot that doesn't override this method, will be essentially broken.
      */
     public abstract void step();
 
-    public int getX() {
-		return MagicSpells.getMagicInteger(this, "x");
-	}
+    public float getX() {
+        return MagicSpells.getMagicFloat(this, "x");
+    }
 
-	public int getY() {
-		return MagicSpells.getMagicInteger(this, "y");
+    public float getY() {
+        return MagicSpells.getMagicFloat(this, "y");
     }
 
     public int getDirection() {
-		return MagicSpells.getMagicInteger(this, "direction");
+        return MagicSpells.getMagicInteger(this, "direction");
     }
-    
+
     /**
      * @return List of all sensors added to this robot
      */
     public List<ISensor> getSensors() {
-    		return sensors;
-	}
-	
+        return sensors;
+    }
+
     /**
      * Add the given sensor to the list of sensors the robot
      * has attached.
      * @param sensor A fully configured sensor
      */
-	public void addSensor(ISensor sensor) {
-		sensors.add(sensor);
-	}
+    public void addSensor(ISensor sensor) {
+        sensors.add(sensor);
+    }
 }

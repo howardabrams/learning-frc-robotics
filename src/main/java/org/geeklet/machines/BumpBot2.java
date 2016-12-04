@@ -3,6 +3,7 @@
  */
 package org.geeklet.machines;
 
+import org.geeklet.machines.support.DefaultRobot;
 import org.geeklet.machines.support.Robot;
 import org.geeklet.machines.support.sensors.UltraSonic;
 
@@ -10,17 +11,10 @@ import org.geeklet.machines.support.sensors.UltraSonic;
  * Robot that uses a sensor to locate objects in its field environment.
  * If it finds something in front of it, it gets scared and stops.
  */
-public class BumpBot extends Robot {
-    /** The left-right coordinate for the Robot's placement on the field. */
-    public int x;
-    /** The up-down coordinate for the Robot's placement on the field. */
-    public int y;
-    /** The angle in degrees of the Robot's direction. */
-    public int direction;
-
+public class BumpBot2 extends DefaultRobot {
     /** Our {@link UltraSonic} sensor that detects objects at close range. */
     UltraSonic sonic;
-    
+
     /**
      * The typical constructor that takes the field coordinate
      * placement as well as the initial pointing direction.
@@ -31,10 +25,8 @@ public class BumpBot extends Robot {
      * @param direction Initial requested direction for the robot,
      *            where <code>0</code> degrees points to the right.
      */
-    public BumpBot(int x, int y, int direction) {
-        this.x = x;
-        this.y = y;
-        this.direction = direction;
+    public BumpBot2(int x, int y, int direction) {
+        super(x, y, direction);
 
         sonic = new UltraSonic(0);
         addSensor(sonic);
@@ -48,36 +40,8 @@ public class BumpBot extends Robot {
     @Override
     public void step() {
         if (!sonic.triggered()) {
-            turn(1);
-            move(3);
-        }
-    }
-
-    /**
-     * Reposition the robot based on its current direction and position.
-     *
-     * @param amount
-     *            The number of units (pixels) to move the robot
-     */
-    void move(int amount) {
-        double rads = Math.toRadians(direction);
-        x += Math.cos(rads) * amount;
-        y += Math.sin(rads) * amount;
-    }
-
-    /**
-     * Rotates the robot some degrees left (if positive), or right (if
-     * negative).
-     *
-     * @param degrees
-     *            Amount to turn robot, from 0 to 360.
-     * @return direction in degrees from 0 to 360
-     */
-    void turn(double degrees) {
-        direction = (int) ((direction + degrees) % 360);
-
-        if (direction < 0) {
-            direction = 360 + direction;
+            turnRight();
+            forward();
         }
     }
 }

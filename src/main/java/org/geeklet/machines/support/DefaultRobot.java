@@ -12,11 +12,11 @@ import org.geeklet.machines.support.Robot;
 /**
  * This simplistic robot simply moves around in a circle.
  */
-public class DefaultRobot extends Robot {
+public abstract class DefaultRobot extends Robot {
     /** The left-right coordinate for the Robot's placement on the field. */
-    public int x;
+    public float x;
     /** The up-down coordinate for the Robot's placement on the field. */
-    public int y;
+    public float y;
     /** The angle in degrees of the Robot's direction. */
     public int direction;
 
@@ -46,16 +46,19 @@ public class DefaultRobot extends Robot {
         this.y = y;
         this.direction = direction;
     }
-    
+
     /**
-     * The <i>robotic world</i> will repeatedly call this function for
-     * the robot to alter its behavior. In this case, we turn and move
-     * in a large circle.
+     * Moves the robot one <i>unit</i> forward, where a "unit" is technically a pixel.
      */
-    @Override
-    public void step() {
-        turn(3);
-        move(3);
+    public void forward() {
+        move(1);
+    }
+
+    /**
+     * Moves the robot one <i>unit</i> backward, where a "unit" is technically a pixel.
+     */
+    public void backward() {
+        move(-1);
     }
 
     /**
@@ -76,6 +79,20 @@ public class DefaultRobot extends Robot {
 
         x += Math.cos(rads) * amount;
         y += Math.sin(rads) * amount;
+    }
+
+    /**
+     * Rotates the robot one degree to the left.
+     */
+    public void turnLeft() {
+        turn(-1);
+    }
+
+    /**
+     * Rotates the robot one degree to the right.
+     */
+    public void turnRight() {
+        turn(1);
     }
 
     /**
