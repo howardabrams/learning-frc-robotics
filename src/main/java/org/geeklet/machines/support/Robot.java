@@ -43,11 +43,6 @@ public abstract class Robot implements DrawableRobot {
                      width + 6, height);
     }
 
-    /**
-     * While many robots would actually move, any robot that doesn't override this method, will be essentially broken.
-     */
-    public abstract void step();
-
     public float getX() {
         return MagicSpells.getMagicFloat(this, "x");
     }

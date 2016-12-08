@@ -4,7 +4,6 @@
  */
 package org.geeklet.machines;
 
-import org.geeklet.machines.support.Coordinate;
 import org.geeklet.machines.support.Field;
 import org.geeklet.machines.support.ArenaField;
 import org.geeklet.machines.support.Robot;
@@ -23,11 +22,9 @@ public class SimpleGame {
      */
     public static void main(String[] args) {
         Field field = new ArenaField("A Simple Game");
-        Coordinate center = field.centerField();
-        Robot myKit = new SimpleRobot(center.x, center.y, 0);
+        Robot myKit = new SimpleRobot(field.centerField().x, field.centerField().y, 0);
 
         field.addRobot(myKit);
         field.runGame();
     }
-
 }

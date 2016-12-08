@@ -3,7 +3,6 @@
  */
 package org.geeklet.machines;
 
-import org.geeklet.machines.support.Coordinate;
 import org.geeklet.machines.support.Field;
 import org.geeklet.machines.support.ArenaField;
 import org.geeklet.machines.support.Robot;
@@ -22,8 +21,7 @@ public class BumpGame {
      */
     public static void main(String[] args) {
         Field field = new ArenaField("A Bump Game");
-        Coordinate center = field.centerField();
-        Robot myKit = new BumpBot(center.x, center.y, 0);
+        Robot myKit = new BumpBot2(field.centerField().x, field.centerField().y, 0);
 
         field.addRobot(myKit);
         field.runGame();

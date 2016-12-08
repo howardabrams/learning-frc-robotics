@@ -7,6 +7,8 @@
  */
 package org.geeklet.machines.support;
 
+import java.awt.Point;
+
 import org.geeklet.machines.support.Robot;
 
 /**
@@ -28,7 +30,7 @@ public abstract class DefaultRobot extends Robot {
      * @param direction Initial requested direction for the robot,
      *            where <code>0</code> degrees points to the right.
      */
-    public DefaultRobot(Coordinate point, int direction) {
+    public DefaultRobot(Point point, int direction) {
         this(point.x, point.y, direction);
     }
 
@@ -42,6 +44,21 @@ public abstract class DefaultRobot extends Robot {
      *            where <code>0</code> degrees points to the right.
      */
     public DefaultRobot(int x, int y, int direction) {
+        this.x = x;
+        this.y = y;
+        this.direction = direction;
+    }
+
+    /**
+     * Constructor takes the field coordinate
+     * placement as well as the initial pointing direction.
+     *
+     * @param x   The desired placement coordinate on the field
+     * @param y   Desired placement coordinate on the field
+     * @param direction Initial requested direction for the robot,
+     *            where <code>0</code> degrees points to the right.
+     */
+    public DefaultRobot(float x, float y, int direction) {
         this.x = x;
         this.y = y;
         this.direction = direction;
@@ -110,12 +127,12 @@ public abstract class DefaultRobot extends Robot {
             direction = 360 + direction;
         }
     }
-    
+
     /**
      * Displays the Robot's name, position and direction.
      */
     public String toString() {
-    		String name = this.getClass().getSimpleName();
+        String name = this.getClass().getSimpleName();
         return String.format("%s Robot at (%d,%d) direction=%d", name, x, y, direction);
     }
 
