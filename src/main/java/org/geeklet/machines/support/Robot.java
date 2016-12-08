@@ -1,3 +1,7 @@
+/*
+ * Implementation of the {@link IRobot} and {@link DrawableRobot}
+ * interfaces.
+ */
 package org.geeklet.machines.support;
 
 import java.awt.Color;
@@ -10,8 +14,9 @@ import java.util.List;
 import org.geeklet.machines.support.sensors.ISensor;
 
 /**
- * A robot that implements
- *
+ * A robot that implements the robot interfaces. All robots should
+ * extend this class, as it allows a robot to be drawn on a playing
+ * field.
  */
 public abstract class Robot implements DrawableRobot {
     public Color c = new Color(220, 0, 240);
@@ -19,6 +24,7 @@ public abstract class Robot implements DrawableRobot {
 
     /**
      * Draws a generic, quite boring robot.
+     * @param g A graphics context that comes from a {@link Field}'s frame
      */
     public void paint(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
@@ -43,16 +49,54 @@ public abstract class Robot implements DrawableRobot {
                      width + 6, height);
     }
 
+    /**
+     * @return the X coordinate of the Robot (in pixels) based on the
+     * Robot's fieldname, <code>x</code>
+     */
     public float getX() {
         return MagicSpells.getMagicFloat(this, "x");
     }
 
+    /**
+     * @return the direction of the Robot (in pixels) based on the
+     * Robot's fieldname, <code>y</code>
+     */
     public float getY() {
         return MagicSpells.getMagicFloat(this, "y");
     }
 
+    /**
+     * @return the direction of the Robot (in degrees) based on the
+     * Robot's fieldname, <code>direction</code>
+     */
     public int getDirection() {
         return MagicSpells.getMagicInteger(this, "direction");
+    }
+
+    /**
+     * Set a robot's X coordinate.
+     * @param x numeric value, either an <code>int</code> or <code>float</code>
+     */
+    public void setX(float x) {
+        MagicSpells.setMagicNumber(this, "x", x);
+    }
+
+    /**
+     * Set a robot's Y coordinate.
+     * @param y numeric value, either an <code>int</code> or <code>float</code>
+     */
+    public void setY(float y) {
+        MagicSpells.setMagicNumber(this, "y", y);
+    }
+
+    /**
+     * Set a robot's X and Y coordinates.
+     * @param x numeric value, either an <code>int</code> or <code>float</code>
+     * @param y numeric value
+     */
+    public void set(float x, float y) {
+        MagicSpells.setMagicNumber(this, "x", x);
+        MagicSpells.setMagicNumber(this, "y", y);
     }
 
     /**

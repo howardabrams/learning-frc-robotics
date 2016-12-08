@@ -96,6 +96,43 @@ public class MagicSpells {
     }
 
     /**
+     * Set a private field in a {@link DrawableRobot} to a particular value
+     * @param robot     instance of a class that has a field of the given
+     *                  name, probably {@link Robot}
+     * @param fieldname a field name, e.g. "x", "y" or "direction" of
+     *                  either type <code>int</code> or <code>float</code>.
+     * @param value     a numeric number
+     */
+    public static void setMagicNumber(Object robot, String fieldname, float value) {
+        Class<? extends Object> r = robot.getClass();
+        Field f;
+        try {
+            f = r.getField(fieldname);
+        } catch (NoSuchFieldException e) {
+            try {
+                f = r.getDeclaredField(fieldname);
+            } catch (Exception e1) {
+                        magicNumberFieldError(fieldname);
+                        return;
+            }
+        } catch (Exception e) {
+            magicNumberFieldError(fieldname);
+            return;
+        }
+        f.setAccessible(true);
+
+        try {
+                        f.setFloat(robot, value);
+        } catch (Exception e) {
+                        try {
+                                f.setInt(robot, (int) value);
+                        } catch (IllegalArgumentException | IllegalAccessException e1) {
+                    magicNumberFieldError(fieldname);
+                        }
+        }
+    }
+
+    /**
      * @param clazz
      *            A sensor class to search, e.g. <code>UltraSonic.class</code>
      * @return a list of all sensors of a particular type (class).

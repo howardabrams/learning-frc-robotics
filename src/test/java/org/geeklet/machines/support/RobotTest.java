@@ -15,6 +15,12 @@ import junit.framework.TestCase;
  * MockRobotFloats}.
  */
 public class RobotTest extends TestCase {
+    static final int INIT_X_INT = 1;
+    static final int INIT_Y_INT = 42;
+    static final float INIT_X_FLOAT = 4.5f;
+    static final float INIT_Y_FLOAT = 5.1f;
+    static final int INIT_DIRECTION = 3;
+
     /**
      * Implementation of {@link Robot} class that contains
      * <code>int</code> types for the X, Y coordinates.
@@ -42,7 +48,7 @@ public class RobotTest extends TestCase {
         float y;
         int direction;
 
-        public MockRobotFloats(int i, int j, int k) {
+        public MockRobotFloats(float i, float j, int k) {
             x = i;
             y = j;
             direction = k;
@@ -60,43 +66,90 @@ public class RobotTest extends TestCase {
      */
     protected void setUp() throws Exception {
         super.setUp();
-        robot1 = new MockRobotInts(1, 2, 3);
-        robot2 = new MockRobotFloats(4, 5, 6);
+        robot1 = new MockRobotInts(INIT_X_INT, INIT_Y_INT, INIT_DIRECTION);
+        robot2 = new MockRobotFloats(INIT_X_FLOAT, INIT_Y_FLOAT, INIT_DIRECTION);
     }
 
     /**
      * Test method for {@link org.geeklet.machines.support.Robot#getX()}.
      */
     public void testGetXInts() {
-        assertEquals(1.0f, robot1.getX());
+        assertEquals((float)INIT_X_INT, robot1.getX());
     }
 
     /**
      * Test method for {@link org.geeklet.machines.support.Robot#getX()}.
      */
     public void testGetXFloats() {
-        assertEquals(4.0f, robot2.getX());
+        assertEquals(INIT_X_FLOAT, robot2.getX());
     }
 
     /**
      * Test method for {@link org.geeklet.machines.support.Robot#getY()}.
      */
     public void testGetYInts() {
-        assertEquals(2.0f, robot1.getY());
+        assertEquals((float)INIT_Y_INT, robot1.getY());
     }
 
     /**
      * Test method for {@link org.geeklet.machines.support.Robot#getY()}.
      */
     public void testGetYFloats() {
-        assertEquals(5.0f, robot2.getY());
+        assertEquals(INIT_Y_FLOAT, robot2.getY());
     }
 
     /**
      * Test method for {@link org.geeklet.machines.support.Robot#getDirection()}.
      */
     public void testGetDirection() {
-        assertEquals(3, robot1.getDirection());
+        assertEquals(INIT_DIRECTION, robot1.getDirection());
+    }
+
+    /**
+     * Test method for {@link org.geeklet.machines.support.Robot#getX()}.
+     */
+    public void testSetXInts() {
+        final int new_x = 100;
+        robot1.setX(new_x);
+        assertEquals((float)new_x, robot1.getX());
+    }
+
+    /**
+     * Test method for {@link org.geeklet.machines.support.Robot#getX()}.
+     */
+    public void testSetXFloats() {
+        final float new_x = 102.0f;
+        robot2.setX(new_x);
+        assertEquals(new_x, robot2.getX());
+    }
+
+    /**
+     * Test method for {@link org.geeklet.machines.support.Robot#getY()}.
+     */
+    public void testSetYInts() {
+        final int new_y = 106;
+        robot1.setY(new_y);
+        assertEquals((float)new_y, robot1.getY());
+    }
+
+    /**
+     * Test method for {@link org.geeklet.machines.support.Robot#getY()}.
+     */
+    public void testSetYFloats() {
+        final float new_y = 112.5f;
+        robot2.setY(new_y);
+        assertEquals(new_y, robot2.getY());
+    }
+
+    /**
+     * Test method for {@link org.geeklet.machines.support.Robot#getDirection()}.
+     */
+    public void testSetPosition() {
+        final int new_x = 42;
+        final float new_y = 112.5f;
+        robot2.set(new_x, new_y);
+        assertEquals((float)new_x, robot2.getX());
+        assertEquals(new_y, robot2.getY());
     }
 
     /**
