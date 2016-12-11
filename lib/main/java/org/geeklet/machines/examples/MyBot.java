@@ -2,7 +2,7 @@
  * The example robot that will accompany the lesson chapter:
  *     docs/20-learning-java
  */
-package org.geeklet.machines;
+package org.geeklet.machines.examples;
 
 import org.geeklet.machines.support.Robot;
 

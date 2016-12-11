@@ -2,9 +2,9 @@
  * Example `game` that accompanies the lesson chapter:
  *     docs/20-learning-java.md
  */
-package org.geeklet.machines;
 
 import org.geeklet.machines.support.Field;
+import org.geeklet.machines.examples.MyBot;
 import org.geeklet.machines.support.ArenaField;
 import org.geeklet.machines.support.Robot;
 

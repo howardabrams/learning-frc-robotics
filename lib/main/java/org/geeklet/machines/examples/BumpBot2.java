@@ -1,7 +1,7 @@
 /*
  * Accompanies the lesson chapter: docs/40-adding-sensors.md
  */
-package org.geeklet.machines;
+package org.geeklet.machines.examples;
 
 import org.geeklet.machines.support.DefaultRobot;
 import org.geeklet.machines.support.sensors.UltraSonic;

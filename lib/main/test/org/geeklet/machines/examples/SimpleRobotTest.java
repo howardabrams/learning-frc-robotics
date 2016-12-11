@@ -1,4 +1,4 @@
-package org.geeklet.machines;
+package org.geeklet.machines.examples;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
