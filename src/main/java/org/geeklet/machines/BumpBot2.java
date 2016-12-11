@@ -4,7 +4,6 @@
 package org.geeklet.machines;
 
 import org.geeklet.machines.support.DefaultRobot;
-import org.geeklet.machines.support.Robot;
 import org.geeklet.machines.support.sensors.UltraSonic;
 
 /**

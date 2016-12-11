@@ -157,4 +157,11 @@ public abstract class FieldObject implements IFieldObject {
 	
 		g2.setStroke(oldStroke);
 	}
+
+	/**
+	 * @return the area this field object occupies
+	 */
+	public Area getArea() {
+		return area;
+	}
 }

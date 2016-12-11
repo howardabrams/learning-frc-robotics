@@ -21,8 +21,8 @@ public class SimpleGame {
      * @param args These are ignored
      */
     public static void main(String[] args) {
-        Field field = new ArenaField("A Simple Game");
-        Robot myKit = new SimpleRobot(field.centerField().x, field.centerField().y, 0);
+        Field field = new ArenaField("A Simple Game", 500, 500);
+        Robot myKit = new SimpleRobot(field.center().x, field.center().y, 0);
 
         field.addRobot(myKit);
         field.runGame();

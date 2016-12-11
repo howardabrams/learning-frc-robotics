@@ -7,7 +7,15 @@ package org.geeklet.machines.support;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.RadialGradientPaint;
+import java.awt.Rectangle;
 import java.awt.RenderingHints;
+import java.awt.Shape;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Area;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Path2D;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,20 +30,34 @@ public abstract class Robot implements DrawableRobot {
     public Color c = new Color(220, 0, 240);
     protected List<ISensor> sensors = new LinkedList<ISensor>();
 
+    Area area = null;
+    Graphics cachedGraphics = null;
+
     /**
      * Draws a generic, quite boring robot.
      * @param g A graphics context that comes from a {@link Field}'s frame
      */
     public void paint(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
+        final int width = 20;
+        final int height = 15;
+
+        cachedGraphics = g;
+        final Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 
-        g2d.translate(getX(), getY());
-        g2d.rotate(Math.toRadians(getDirection()));
+        // The definition of the entire area of the robot can also
+        // be used to make a shadow:
+        area = new Area(new Rectangle(-width / 2, -height / 2, width + 6, height));
+        area.add(new Area(new Ellipse2D.Float(-width / 2, -height / 2 - 3, 8, 4)));
+        area.add(new Area(new Ellipse2D.Float(-width / 2, +height / 2, 8, 4)));
+        area.add(new Area(new Ellipse2D.Float(width / 2, -height / 2 - 3, 8, 4)));
+        area.add(new Area(new Ellipse2D.Float(width / 2, +height / 2, 8, 4)));
 
-        int width = 20;
-        int height = 15;
+        area.transform(AffineTransform.getRotateInstance(getAngle()));
+        area.transform(AffineTransform.getTranslateInstance(getX(), getY()));
+        g2d.translate(getX(), getY());
+        g2d.rotate(getAngle());
 
         // Draw the 4 wheels:
         g2d.setColor(Color.BLACK);
@@ -45,8 +67,68 @@ public abstract class Robot implements DrawableRobot {
         g2d.fillOval( width/2, +height/2, 8, 4);
 
         g2d.setColor(c);
-        g2d.fillRect(-width/2, -height/2,
-                     width + 6, height);
+        g2d.fillRect(-width/2, -height/2, width + 6, height);
+    }
+
+    /**
+     * Called when a robot has crashed into some object
+     * @param x coordinate point on the robot that intersects with some field object
+     * @param y coordinate point on the robot
+     * @param width the width of the area of overlap with field object (this will be small)
+     * @param height the height of the overlap area with field object
+     */
+    public void crash(int x, int y, int w, int h) {
+        System.out.println("CRASH!");
+        if (cachedGraphics != null) {
+            Graphics2D g = (Graphics2D) cachedGraphics;
+            g.setPaint(new RadialGradientPaint(
+                             new Point(200, 400), 50, new float[] { 0, 0.3f, 1 },
+                             new Color[] { Color.RED, Color.YELLOW, Color.ORANGE }));
+            g.fill(createStar(x, y, 10, 25, 3, 0));
+        }
+    }
+
+    /**
+     * Create a 'star' shape
+     * @param centerX
+     * @param centerY
+     * @param innerRadius
+     * @param outerRadius
+     * @param numRays
+     * @param startAngleRad
+     * @return
+     */
+    private static Shape createStar(double centerX, double centerY,
+                                    double innerRadius, double outerRadius,
+                                    int numRays, double startAngleRad) {
+        Path2D path = new Path2D.Double();
+        double deltaAngleRad = Math.PI / numRays;
+        for (int i = 0; i < numRays * 2; i++) {
+            double angleRad = startAngleRad + i * deltaAngleRad;
+            double ca = Math.cos(angleRad);
+            double sa = Math.sin(angleRad);
+            double relX = ca;
+            double relY = sa;
+            if ((i & 1) == 0) {
+                relX *= outerRadius;
+                relY *= outerRadius;
+            } else {
+                relX *= innerRadius;
+                relY *= innerRadius;
+            }
+            if (i == 0) {
+                path.moveTo(centerX + relX, centerY + relY);
+            } else {
+                path.lineTo(centerX + relX, centerY + relY);
+            }
+        }
+        path.closePath();
+        return path;
+    }
+
+    /** @return the entire area occupied by the Robot for purposes of collision detection. */
+    public Area getArea() {
+        return area;
     }
 
     /**
@@ -71,6 +153,13 @@ public abstract class Robot implements DrawableRobot {
      */
     public int getDirection() {
         return MagicSpells.getMagicInteger(this, "direction");
+    }
+
+    /**
+     * @return robot direction in radians
+     */
+    public double getAngle() {
+        return Math.toRadians(getDirection());
     }
 
     /**

@@ -21,7 +21,7 @@ public class BumpGame {
      */
     public static void main(String[] args) {
         Field field = new ArenaField("A Bump Game");
-        Robot myKit = new BumpBot2(field.centerField().x, field.centerField().y, 0);
+        Robot myKit = new BumpBot2(field.center().x, field.center().y, 0);
 
         field.addRobot(myKit);
         field.runGame();

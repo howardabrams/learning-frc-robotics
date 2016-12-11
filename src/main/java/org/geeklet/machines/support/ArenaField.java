@@ -60,6 +60,6 @@ public class ArenaField extends Field {
         g.setColor(backgd);
         g.fillRect(0, 0, width, height);
 
-        paintAll(g);
+        paintAllObjects(g);
 	}
 }

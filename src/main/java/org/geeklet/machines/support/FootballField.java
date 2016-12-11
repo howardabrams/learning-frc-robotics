@@ -55,6 +55,6 @@ public class FootballField extends ArenaField {
             g.fillRect(sx, 0, 2, height);
         }
 
-        paintAll(g);
+        paintAllObjects(g);
     }
 }
