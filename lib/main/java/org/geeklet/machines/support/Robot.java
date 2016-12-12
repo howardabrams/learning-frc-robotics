@@ -27,7 +27,7 @@ import org.geeklet.machines.support.sensors.ISensor;
  * field.
  */
 public abstract class Robot implements DrawableRobot {
-    public Color c = new Color(220, 0, 240);
+    public Color defaultColor = new Color(160, 0, 140);
     protected List<ISensor> sensors = new LinkedList<ISensor>();
 
     Area area = null;
@@ -66,7 +66,7 @@ public abstract class Robot implements DrawableRobot {
         g2d.fillOval( width/2, -height/2 - 3, 8, 4);
         g2d.fillOval( width/2, +height/2, 8, 4);
 
-        g2d.setColor(c);
+        g2d.setColor(defaultColor);
         g2d.fillRect(-width/2, -height/2, width + 6, height);
     }
 

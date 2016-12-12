@@ -114,7 +114,7 @@ public abstract class Field extends Frame {
                 robot.step();
                 this.repaint();
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(40);
                 } catch (InterruptedException e) {
                 }
             }
@@ -129,8 +129,8 @@ public abstract class Field extends Frame {
     protected boolean continueGame() {
         for(final DrawableRobot robot : robots) {
             if (robot.getArea() != null) {
-                final Area a = (Area) robot.getArea().clone();
                 for(final FieldObject obj : objects) {
+                    final Area a = (Area) robot.getArea().clone();
                     a.intersect(obj.getArea());
                     if (!a.isEmpty()) {
                         robot.crash(a.getBounds().x, a.getBounds().y,
@@ -180,6 +180,39 @@ public abstract class Field extends Frame {
      */
     public List<FieldObject> getFieldObjects() {
         return objects;
+    }
+
+    /**
+     * Looks to see if FieldObjects of a particular class are located
+     * inside the given area.
+     * @param type a class reference to a particular {@link FieldObject}
+     * @param area an area which should overlap with the field
+     * @return <code>true</code> if part of the area occupied by the object overlaps with a section of the given area.
+     */
+    public boolean isAnyObjectinArea(Class<? extends FieldObject> type, Area area) {
+        for (final FieldObject obj : getFieldObjects()) {
+
+            // If a type is given, it must be of a particular class
+            if (type == null || obj.getClass() == type) {
+
+                // Create an intersection between the given area
+                // and the area of this particular object:
+                final Area overlap = (Area) area.clone();
+                overlap.intersect(obj.getArea());
+                if (!overlap.isEmpty())
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @param area e.g., like the triangle of a field of view
+     * @return <code>true</true> if any {@link FieldObject} on the field <i>intersects</i>
+     *         with the given area.
+     */
+    public boolean isAnyObjectinArea(Area area) {
+        return isAnyObjectinArea(null, area);
     }
 
     /**

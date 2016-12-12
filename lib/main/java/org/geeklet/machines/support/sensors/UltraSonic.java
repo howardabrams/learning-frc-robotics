@@ -1,4 +1,4 @@
-/*
+;;/*
  * Basic sensor that emulates a short-range ultrasonic electrical
  * sensor.
  */
@@ -11,9 +11,11 @@ package org.geeklet.machines.support.sensors;
  * immediately in front.
  */
 public class UltraSonic extends DirectionalSensor {
-    /** Constant value of the number of pixels to scan in front for an
-     * object. */
-    int RANGE = 30;
+    /**
+     * Constant value of the number of pixels to scan in front for an
+     * object.
+     */
+    final static int RANGE = 30;
 
     /**
      * Constructor that takes the relative sensor direction.
@@ -30,18 +32,7 @@ public class UltraSonic extends DirectionalSensor {
      */
     @Override
     public boolean triggered() {
-        float x = attachedTo.getX();
-        float y = attachedTo.getY();
-        int d = attachedTo.getDirection() + direction;
-        double rads = Math.toRadians(d);
-
-        for (int a = 0; a < RANGE; a++) {
-            int vx = (int) (x + Math.cos(rads) * a);
-            int vy = (int) (y + Math.sin(rads) * a);
-
-            if (playingField.insideAnyObject(vx, vy))
-                return true;
-        }
-        return false;
+        final int angle = attachedTo.getDirection() + direction;
+        return searchFieldofView(null, angle-3, angle+3, RANGE);
     }
 }
