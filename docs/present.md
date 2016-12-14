@@ -41,12 +41,12 @@ Part 3: Code Visualization  (Howard)
 ==========================
 
 Reading tutorials that are to the point and creating simplistic
-classes can be helpful, we really wanted a visual component to this
-learning. In this class...
+classes can be helpful, but we really wanted a visual component to
+this learning. In this class...
 
   (DEMO: Highlight the `step()` method in `MyRobot.java`
 
-The student has a pretend robot that only changes its X coordinate.
+The student has a pretend their robot moves by changing its X coordinate.
 However, the student can take their simple robot, and add it to a Game.
 
   (DEMO: Highlight the `MyGame.java`)
@@ -55,15 +55,25 @@ And see how it behaves in a field.
 
 Of course, students who program real robots wouldn't be using X and Y
 coordinates, I just found that it was just a useful concept when
-initially learning. As they go through this course, these pretend
-robots become more virtual. During the lesson on Finite State
-Machines, the student would define their states and then attach
-virtual sensors to generate Events to change their state.
+initially learning.
+
+As they go through this course, these pretend robots become more
+virtual, so their robots *drop* the coordinate fields and move around
+using function abstractions to virtual engines, like this call to
+`forward` and `turnLeft`:
+
+  (DEMO: Show `BumpBot2.java`)
+
+Then, during the lesson on Finite State Machines, the student would
+define their states and then attach virtual sensors to generate Events
+to change their state.
 
   (DEMO: Show `StatefulRobot.java`)
 
 Here, a visual tracker can locate a ball, and drive right towards it
 until it gets right next to it.
+
+  (DEMO: Run the `StatefulGame.java`)
 
 Part 4: Conclusion   (Paul)
 ==================
