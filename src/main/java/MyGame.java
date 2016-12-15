@@ -4,7 +4,6 @@
  */
 
 import org.geeklet.machines.support.Field;
-import org.geeklet.machines.examples.MyBot;
 import org.geeklet.machines.support.ArenaField;
 import org.geeklet.machines.support.Robot;
 
@@ -24,7 +23,7 @@ public class MyGame {
         Field field = new ArenaField("My Fun Game");
 
         // Create and place the robot on the "left" side of the field
-        Robot myKit = new MyBot(60, 200, 0);
+        Robot myKit = new MyRobot(200, 200, 0);
 
         field.addRobot(myKit);
 
