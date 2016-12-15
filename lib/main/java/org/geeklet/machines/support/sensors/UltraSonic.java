@@ -1,4 +1,4 @@
-;;/*
+/*
  * Basic sensor that emulates a short-range ultrasonic electrical
  * sensor.
  */

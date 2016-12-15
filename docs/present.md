@@ -11,10 +11,11 @@ While they are eager to learn, programming the controllers on these
 robots involve students learning Java, Eclipse and Git, and I noticed
 that any online resources they found on those subjects were oriented
 towards enterprise application developers, not budding young
-scientists.
+roboticists.
 
 So Paul and I decided for our part in this year's Hackathon to put
-together a helpful, but fun environment for the student to learn Java.
+together a helpful, but fun environment for open source project for
+students to learn Java.
 
 Part 2: Tutorials  (Paul)
 =================
