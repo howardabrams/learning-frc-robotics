@@ -11,8 +11,8 @@ applications.
 A Member of any programming team should be able to do the following:
 
 * Know the Basics of the Java Programming language
-* Should know how to write code [using an editor][11], like Eclipse
-* Know how to [write tests to verify code][12]
+* Should know how to write code [using an editor][011], like Eclipse
+* Know how to [write tests to verify code][013]
 * Know how to create code snapshots using Git (these snapshots are 
 called "commits")
 * Know how to share code through Github
@@ -20,5 +20,5 @@ called "commits")
 include both technical chops as well as ways of resolving inter-person 
 conflict over code)
 
-[11]: ../11-eclipse
-[12]: ../12-unit-test
+[011]: ../012-installing-eclipse
+[013]: ../013-unit-test

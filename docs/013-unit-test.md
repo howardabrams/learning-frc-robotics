@@ -162,4 +162,3 @@ Why is this the case? Clearly we have a bug in our program and writing tests hel
 {% endhighlight%}
 
 Now our test pass. However, we should verify that by writing a function where the direction is 45 degrees, and maybe -72!
-
