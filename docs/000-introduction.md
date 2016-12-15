@@ -14,7 +14,6 @@ bit about us.
 
 What do FRC Teams Do?
 ---------------------
-
 As part of the FIRST Robotics Competition (FRC), we design and build
 robotics to compete against other high schools in obstacle course and
 unique games.
@@ -37,14 +36,13 @@ This course is designed to make you helpful early in the process.
 
 What to Learn
 -------------
-
 Every member of the programming team should:
 
- * Know the Basics of the [Java Programming language][20]
+ * Know the Basics of the [Java Programming language][020]
  * Should know how to write code using an editor, like Eclipse
  * Know how to write tests to verify code
  * Know how to create code snapshots using Git (these snapshots are called "commits")
  * Know how to share code through Github
  * Learn what it takes to be a good programmer (this section would include both technical chops as well as ways of resolving inter-person conflict over code)
 
-  [20]: ../20-learning-java
+  [020]: ../020-learning-java

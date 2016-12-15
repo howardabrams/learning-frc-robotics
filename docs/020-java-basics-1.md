@@ -2,17 +2,13 @@
 layout: page
 title: Introduction to Java
 ---
-Introduction to Java
 ======================================================================
 
-As we [mentioned before][1], programming a FIRST Robot means
+As we [mentioned before][000], programming a FIRST Robot means
 programming its behavior and *smarts* in [Java][2], a programming
 language popular in big companies, but not usually taught as an
 introduction to computers. Let's change that, by walking through the
 basics by creating some *pretend robots*.
-
-  [1] ../000-introduction
-  [2] https:*/go.java*index.html?intcmp=gojava-banner-java-com
 
 Why we Teach Java
 ------------------------------------------------------------
@@ -471,3 +467,6 @@ Summary
   - Programming languages, like Java, make trade-offs.
   - Java organizes code in *classes* that hold both data (values) and code
   - To write your own code, we will use Eclipse
+
+    [000]: ../000-introduction
+    [2]: https:*/go.java*index.html?intcmp=gojava-banner-java-com

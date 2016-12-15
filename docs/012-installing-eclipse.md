@@ -18,7 +18,7 @@ Then keep clicking...
 Then, finally:
 ![Website](./public/images/687474703a2f2f686f77617264616272616d732e636f6d2f7069676d6963652f30302d67657474696e672d737461727465642f65636c697073652d776562736974652d312e706e67.png)
 
-You should now have a version of Eclips for your computers Operating System.
+You should now have a version of Eclipse for your computers Operating System.
 
 Open the Downloaded File
 ------------------------
@@ -26,7 +26,7 @@ We call this a *tar ball*.  Double clicking on most operating systems should
 simply create an Installation application:
 ![Download](./public/images/687474703a2f2f686f77617264616272616d732e636f6d2f7069676d6963652f30302d67657474696e672d737461727465642f65636c697073652d696e7374616c6c2d312e706e67.png)
 
-Double-clicking onthe installer application should bring you a choice.  We want 
+Double-clicking on the installer application should bring you a choice.  We want 
 **Eclipse IDE for JAVA Developers**:
 ![Install](./public/images/687474703a2f2f686f77617264616272616d732e636f6d2f7069676d6963652f30302d67657474696e672d737461727465642f65636c697073652d696e7374616c6c2d322e706e67.png)
 
@@ -34,12 +34,12 @@ Follow therest of the Dialogs (you can choose the defaults).
 
 Install the Robotic Extenshions from FIRST:
 -------------------------------------------
-Find and start the **Eclise** application you have just installed:
+Find and start the **Eclipse** application you have just installed:
 
 Select **Install New Software** from the **Help** menu:
 ![Steps](./public/images/687474703a2f2f686f77617264616272616d732e636f6d2f7069676d6963652f30302d67657474696e672d737461727465642f65636c697073652d312e706e67.png)
 
-Click the **Add** button toadd a new location where we can get goodies:
+Click the **Add** button to add a new location where we can get goodies:
 ![Goodies](./public/images/687474703a2f2f686f77617264616272616d732e636f6d2f7069676d6963652f30302d67657474696e672d737461727465642f65636c697073652d322e706e67.png)
 
 Enter the following:
@@ -61,5 +61,3 @@ Eclipse has the ability to connect to the Issues we create in our Github reposit
 This gives us the following features:
 
 * See what needs to be done from our editor
-* asdf
-* 
