@@ -2,17 +2,14 @@
 layout: page
 title: Introduction to Java
 ---
-Introduction to Java
-======================================================================
-
 As we [mentioned before][1], programming a FIRST Robot means
 programming its behavior and *smarts* in [Java][2], a programming
 language popular in big companies, but not usually taught as an
 introduction to computers. Let's change that, by walking through the
 basics by creating some *pretend robots*.
 
-  [1] ../000-introduction
-  [2] https:*/go.java*index.html?intcmp=gojava-banner-java-com
+  [1]: ../000-introduction
+  [2]: https://go.java/index.html?intcmp=gojava-banner-java-com
 
 Why we Teach Java
 ------------------------------------------------------------
@@ -56,12 +53,14 @@ What is Object Oriented?
   collection of those variables:
 
    {% highlight java %}
+
      Robot {            // Warning, not correct Java
           name;         // This is just an illustration
           x;
           y;
           direction;
      }
+
    {% endhighlight %}
 
    In case you aren't familiar with Java, the semicolons separate
@@ -73,12 +72,14 @@ What is Object Oriented?
    bit:
 
    {% highlight java %}
+
      Robot {             // Warning, still not correct Java
          String name;
          int x;
          int y;
          int direction;
      }
+
    {% endhighlight %}
 
    We place a field's type in front of its variable name.  A `String`
@@ -93,12 +94,14 @@ What is Object Oriented?
    Java, this is called a `Class`, so here we go with some real Java:
 
    {% highlight java %}
+
      class Robot {       // Ah, this is good Java
          String name;
          int x;
          int y;
          int direction;
      }
+
    {% endhighlight %}
 
    Why didn't I just tell you the correct Java at the beginning?  I
@@ -111,7 +114,9 @@ What is Object Oriented?
    let's represent a *specific* robot using the `new` keyword:
 
    {% highlight java %}
+
      redOne = new Robot();
+
    {% endhighlight %}
 
    We created a variable called `redOne` and said that it should be a
@@ -119,7 +124,9 @@ What is Object Oriented?
    `redOne` should be at first. So here is the correct syntax:
 
    {% highlight java %}
+
      Robot redOne = new Robot();
+
    {% endhighlight %}
 
    At this point, you might be complaining about Java's *verbosity*, and you would have
@@ -130,12 +137,14 @@ What is Object Oriented?
    the details by setting those fields:
 
    {% highlight java %}
+
      Robot redOne = new Robot();
 
      redOne.name = "My Little Red Robot";
      redOne.x = 10;
      redOne.y = 121;
      redOne.direction = 337;  // Degrees 0° points to right
+
    {% endhighlight %}
 
    I could do each of the three others in the above picture in a
@@ -148,10 +157,12 @@ A Move Function
   might do something like:
 
   {% highlight java %}
+
     move (Robot someRobot, int amount) {   // Warning! Not real Java...again
         someRobot.x = cos(someRobot.direction) * amount;
         someRobot.y = sin(someRobot.direction) * amount;
     }
+
   {% endhighlight %}
 
   Ah, don't worry about the math. I'm using a little trigonometry to
@@ -162,6 +173,7 @@ A Move Function
   words, we place the function *inside* the Robot's definition:
 
   {% highlight java %}
+
     class Robot {
         String name;
         int x;
@@ -173,6 +185,7 @@ A Move Function
             y = Math.sin(direction) ** amount;
         }
     }
+
   {% endhighlight %}
 
   **Note:** A function *inside a class definition* is called a
@@ -188,7 +201,9 @@ A Move Function
   *associated* with our robot, and we call it like:
 
   {% highlight java %}
+
     redOne.move(39);
+
   {% endhighlight %}
 
   The `move` is specific to our robot, but we could have a `move`
@@ -223,6 +238,7 @@ Making Specialized Robots
   Let's change our `Robot` definition:
 
    {% highlight java %}
+
      Robot {
          String name;
          int x;
@@ -236,6 +252,7 @@ Making Specialized Robots
 
          void draw();   // Notice it doesn't DO anything
      }
+
    {% endhighlight %}
 
    Unlike our `move` method, the `draw` function have any code.
@@ -247,21 +264,25 @@ Making Specialized Robots
    We then create our unique definitions:
 
    {% highlight java %}
+
      class FourWheeledRobot extends Robot {
        void draw() {
           // We place the code to draw a robot with four wheels in here!
        }
      }
+
    {% endhighlight %}
 
    And:
 
    {% highlight java %}
+
      TankTreadRobot extends Robot {
        void draw() {
           // We place the code to draw a robot with four wheels in here!
        }
      }
+
    {% endhighlight %}
 
    A *robot definition* is called a `Class`.
@@ -282,8 +303,10 @@ What's up with Java?
   All spaces are *optional*, so these lines are the same:
 
    {% highlight python %}
+
     x = 1 + foo
     x=1+foo
+
   {% endhighlight %}
 
   The above is actually Python, which ignores *most* spaces...except at
@@ -293,20 +316,26 @@ What's up with Java?
 
   Look at this code. Are we trying to assign a variable and call a function?
 
-  #+BEGIN_SRC python
+   {% highlight python %}
+
     x = 1 + foo   bar()
+
   {% endhighlight %}
 
   Or assign a variable the results of the function?
 
-   {% highlight python %}
+  {% highlight python %}
+
     x = 1 + foobar()
+
   {% endhighlight %}
 
   Java makes it clear by *terminating* all statements with a semi-colon:
 
-   {% highlight python %}
+  {% highlight python %}
+
     x = 1 + foo;    bar();
+
   {% endhighlight %}
 
   Typically, we do not place multiple statements on a line, but this
@@ -315,19 +344,23 @@ What's up with Java?
 ### What's up with Comments?
 
    Java evolved from a language where comments started
-   with `***` and ended with `*** ` like:
+   with `/*` and ended with `*/ ` like:
 
    {% highlight c %}
-   *** This is a comment ***
+
+   /* This is a comment */
+
    {% endhighlight %}
 
    This meant that they could easily go on multiple lines:
 
    {% highlight c %}
-   /**
+
+   /*
          We can have a comment with lots of information.
        Even on multiple lines.
-                  Like this. **/
+                  Like this. */
+
    {% endhighlight %}
 
    No one likes to *hunt* for the first and last parts (especially since
@@ -335,19 +368,23 @@ What's up with Java?
    the asterisks:
 
    {% highlight c %}
-   /**
-    **     We can have a comment with lots of information.
-    **   Even on multiple lines.
-    **              Like this.
-    **/
+
+   /*
+    *     We can have a comment with lots of information.
+    *   Even on multiple lines.
+    *              Like this.
+    */
+
    {% endhighlight %}
 
    Other languages need a single character, and comments go to the end
    of the line:
 
    {% highlight java %}
+
      // Each comment begins with two slashes
      // No ending character needed.
+
    {% endhighlight %}
 
    Java decided they liked both, so you can use either style.
@@ -363,6 +400,7 @@ What's up with Java?
    debugging much easier.
 
    {% highlight java %}
+
      /*
       * Calculates and returns the nth factorial, where
       *      1! = 1, 2! = 2 * 1, 3! = 3 * 2 * 1, etc.
@@ -378,28 +416,38 @@ What's up with Java?
          else
              return n ** fib(n - 1);
      }
+
    {% endhighlight %}
 
 ### What's up with all the Text?
 
    Suppose Jenny wrote this function to times a number by itself:
-   {% highlight java %}
+
+    {% highlight java %}
+
      int square(int n) {
          return n ** n;
      }
-   {% endhighlight %}
+
+    {% endhighlight %}
 
    And Emma wrote this function to draw a square of a particular size
    where the mouse is located:
+
    {% highlight java %}
+
      int square(int size) {
          graphicsPage.drawRectangle(mouse.x, mouse.y, size, size);
      }
+
    {% endhighlight %}
 
    And you wrote this code:
+
    {% highlight java %}
+
      square(5);
+
    {% endhighlight %}
 
    How does Java know what to do?
@@ -409,6 +457,7 @@ What's up with Java?
    For instance...
 
    {% highlight java %}
+
      package org.usfirst.frc.team2733.robot;
 
      import edu.wpi.first.wpilibj.IterativeRobot;
@@ -416,6 +465,7 @@ What's up with Java?
 
      class Robot extends IterativeRobot {
        ...
+
    {% endhighlight %}
 
    Here, we make a `Robot` that uses something called `IterativeRobot`
@@ -423,8 +473,11 @@ What's up with Java?
    That's its short name.
 
    We could have written:
+
    {% highlight java %}
+
      class Robot extends edu.wpi.first.wpilibj.IterativeRobot {
+
    {% endhighlight %}
 
    But that is too long and Java is wordy enough.
