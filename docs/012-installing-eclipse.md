@@ -30,9 +30,9 @@ Double-clicking on the installer application should bring you a choice.  We want
 **Eclipse IDE for JAVA Developers**:
 ![Install](./public/images/687474703a2f2f686f77617264616272616d732e636f6d2f7069676d6963652f30302d67657474696e672d737461727465642f65636c697073652d696e7374616c6c2d322e706e67.png)
 
-Follow therest of the Dialogs (you can choose the defaults).
+Follow the rest of the Dialogs (you can choose the defaults).
 
-Install the Robotic Extenshions from FIRST:
+Install the Robotic Extensions from FIRST:
 -------------------------------------------
 Find and start the **Eclipse** application you have just installed:
 
