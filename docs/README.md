@@ -73,6 +73,10 @@ if they feel inclined or need to learn more.
 **Files:**
 
   * [010-getting-started.md](010-getting-started.md)
+  * [011-installing-java.md](010-installing-java.md)
+  * [012-installing-eclipse.md](010-installing-eclipse.md)
+  * [013-downloading-project.md](010-downloading-project.md)
+  * [015-installing-wpilib.md](010-installing-wpilib.md)
 
 Basic Concepts
 --------------

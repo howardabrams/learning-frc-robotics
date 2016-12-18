@@ -2,23 +2,34 @@
 layout: page
 title: Getting Started
 ---
-Interested in joining the robotics team as a programmer? Great! 
+There are many ways to get started learning to code. The lessons on
+this require you to have access to a personal computer (Windows, Mac
+or Linux-based) where you can install some applications.
 
-The skills you learn here will carry you to learning other computer 
-languages and building other projects, like smart phone and web 
-applications.
+The following instructions explain how to get everything you need
+installed and ready to learn. This includes Java, Eclipse and some
+sample code that goes along with this site. Everything we need is free
+and open source.
 
-A Member of any programming team should be able to do the following:
+**Warning:** Our world changes quite quickly, and instructions like
+these on the Internet often get out-dated. The following steps are
+great for the year 2017, but may not be exactly correct later (yes, I
+plan to keep this updated, but if I forget, let me know). Feel free
+follow other instructions for getting Java and Eclipse running on your
+system.
 
-* Know the Basics of the Java Programming language
-* Should know how to write code [using an editor][011], like Eclipse
-* Know how to [write tests to verify code][013]
-* Know how to create code snapshots using Git (these snapshots are 
-called "commits")
-* Know how to share code through Github
-* Learn what it takes to be a good programmer (this section would 
-include both technical chops as well as ways of resolving inter-person 
-conflict over code)
+Getting Started Steps:
+----------------------------------------------------------------------
 
-[011]: ../012-installing-eclipse
-[013]: ../013-unit-test
+  1. [Install Java][011]
+  2. [Install Eclipse][012]
+  3. [Download our Source Code Project][013]
+  4. [Installing FRC's Robotic Library][015] (optional)
+
+After getting everything installed, start [learning Java][020]!
+
+  [011]: ../011-installing-java
+  [012]: ../012-installing-eclipse
+  [013]: ../013-downloading-project
+  [015]: ../015-installing-wpilib
+  [020]: ../020-java-basics-1

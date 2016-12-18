@@ -33,9 +33,13 @@ program stronger features (like *vision tracking*), or try their hand
 at CAD, assembly or strategy.
 
 This course is designed to make you helpful early in the process.
+The skills you learn here will carry you to learning other computer
+languages and building other projects, like smart phone and web
+applications.
 
 What to Learn
 -------------
+
 Every member of the programming team should:
 
  * Know the Basics of the [Java Programming language][020]
@@ -45,4 +49,9 @@ Every member of the programming team should:
  * Know how to share code through Github
  * Learn what it takes to be a good programmer (this section would include both technical chops as well as ways of resolving inter-person conflict over code)
 
-  [020]: ../020-learning-java
+But before you can start learning any of this, you'll need
+to [Get Started][010] by installing Java and Eclipse and downloading
+our starter project.
+
+  [020]: ../020-java-basics-1
+  [010]: ../010-getting-started
