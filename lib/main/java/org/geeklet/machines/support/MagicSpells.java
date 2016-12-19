@@ -2,7 +2,9 @@ package org.geeklet.machines.support;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.geeklet.machines.support.sensors.ISensor;
 
@@ -112,8 +114,8 @@ public class MagicSpells {
             try {
                 f = r.getDeclaredField(fieldname);
             } catch (Exception e1) {
-                        magicNumberFieldError(fieldname);
-                        return;
+                magicNumberFieldError(fieldname);
+                return;
             }
         } catch (Exception e) {
             magicNumberFieldError(fieldname);
@@ -122,14 +124,61 @@ public class MagicSpells {
         f.setAccessible(true);
 
         try {
-                        f.setFloat(robot, value);
+            f.setFloat(robot, value);
         } catch (Exception e) {
-                        try {
-                                f.setInt(robot, (int) value);
-                        } catch (IllegalArgumentException | IllegalAccessException e1) {
-                    magicNumberFieldError(fieldname);
-                        }
+            try {
+                f.setInt(robot, (int) value);
+            } catch (IllegalArgumentException | IllegalAccessException e1) {
+                magicNumberFieldError(fieldname);
+            }
         }
+    }
+
+    /**
+     * Given an <i>robot-like</i> object this create a {@link Robot}
+     * that connects to the given object's field variables ... in other
+     * words, the returned instance is a wrapper around it.
+     *
+     * @param robot Instance of any class that implements three variable fields,
+     * <code>x</code>, <code>y</code> and <code>direction</code>
+     * @return a <i>Frankenstein-like</i> Robot that
+     * <i>wraps</i> the given object, <var>robot</var>
+     */
+    public static Robot createFrankieRobot(Object robot) {
+        // Let's just make sure that the object given to us
+        // can be a 'good enough' robot, but verifying they
+        // have all the correct field variables defined:
+        final List<String> names =
+            Arrays.asList(new String[] {"x", "y", "direction"});
+        for (String fieldname : names) {
+
+            final Stream<Field> f1 =
+                Arrays.stream(robot.getClass().getFields());
+            final Stream<Field> f2 =
+                Arrays.stream(robot.getClass().getDeclaredFields());
+            final Stream<Field> f = Stream.concat(f1, f2);
+
+            if (!f.anyMatch(s -> s.getName() == fieldname)) {
+                String msg = String.format("Your robot must have a variable field, '%s', in order to be shown on a field.", fieldname);
+                throw new RuntimeException(msg);
+            }
+        }
+
+        // We assume the robot is "good enough", so we create a
+        // Wrapper Robot that can implement the Java interfaces.
+        final Robot robotWrap = new Robot() {
+                public float getX() {
+                    return MagicSpells.getMagicFloat(robot, "x");
+                }
+                public float getY() {
+                    return MagicSpells.getMagicFloat(robot, "y");
+                }
+                public int getDirection() {
+                    return MagicSpells.getMagicInteger(robot, "direction");
+                }
+                public void step() {    }
+            };
+        return robotWrap;
     }
 
     /**

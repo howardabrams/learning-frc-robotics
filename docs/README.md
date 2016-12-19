@@ -93,8 +93,10 @@ programming language, but then show that we need to group them into a
 
 **Files:**
 
-  * `MyBot.java` :: Just the basic part only ... it won't *run*
+  * `MyRobot.java` :: Just the fields, they will create it
+  * `MyGame.java` :: It is empty, they should fill it in
   * [020-java-basics-1.md](020-java-basics-1.md)
+  * [021-java-basics-methods.md](021-java-basics-methods.md)
 
 ### More OOP
 

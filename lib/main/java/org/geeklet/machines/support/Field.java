@@ -105,6 +105,18 @@ public abstract class Field extends Frame {
     }
 
     /**
+     * If the robot given to this class acts like a {@link Robot},
+     * and even <i>smells</i> like a {@link Robot}, then for our
+     * purposes, it will <i>be</i> a real robot.
+     * @param robot An object that implements the robot field variables,
+     * <code>x</code>, <code>y</code> and <code>direction</code>.
+     */
+    public void addRobot(Object robot) {
+    		final Robot frank = MagicSpells.createFrankieRobot(robot);
+    		this.addRobot(frank);
+    }
+
+    /**
      * This will repeated call each robot's {@link Robot#step()}
      * method until the game ends.
      */
