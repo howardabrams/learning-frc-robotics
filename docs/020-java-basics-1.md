@@ -274,7 +274,8 @@ fred.direction = 337;
 
 {% endhighlight %}
 
-While we have *made* the robot, our last step is to *place* him on the field with this little magic spell:
+While we have *made* the robot, our last step is to *place* him on the
+field with this little magic spell:
 
 {% highlight java %}
 
