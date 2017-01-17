@@ -97,6 +97,8 @@ programming language, but then show that we need to group them into a
   * `MyGame.java` :: It is empty, they should fill it in
   * [020-java-basics-1.md](020-java-basics-1.md)
   * [021-java-basics-methods.md](021-java-basics-methods.md)
+  * [025-java-basics-inheritance.md](021-java-basics-inheritance.md)
+  * [029-whats-up-with-java.md](029-whats-up-with-java.md)
 
 ### More OOP
 
@@ -110,27 +112,10 @@ run something.
 
   * `MyBot.java`
   * `MyGame.java`
-  * [025-java-basics-2.md](025-java-basics-2.md)
 
 **Note:** I would like to show this off on Thursday as this should
 show how they will copy code from the website into Eclipse and
 actually run something to see how it behaves.
-
-### More Eclipse
-
-Since the **Run** button in Eclipse starts our `MyGame` (but can't be
-used to *run* the `MyBot`), we may have to explain more about Eclipse
-at this point. And should them how to stop the program (by either
-clicking the Window's close button or the X icon in Eclipse. Also, we
-may have to explain the `Console`, so perhaps we also teach
-`System.out.println()`.
-
-Does this mean, we fully attempt to explain the windows, views,
-perspectives, etc. in Eclipse, now?
-
-**Files:**
-
-  * [030-eclipse-overview.md](030-eclipse-overview.md)
 
 ### Math Fun
 
@@ -155,6 +140,27 @@ parameters), as this will behave more closely to have a Robot should
   * `SimpleRobot.java`
   * `SimpleGame.java`
 
+### More Eclipse
+
+Since the **Run** button in Eclipse starts our `MyGame` (but can't be
+used to *run* the `MyBot`), we may have to explain more about Eclipse
+at this point. And should them how to stop the program (by either
+clicking the Window's close button or the X icon in Eclipse. Also, we
+may have to explain the `Console`, so perhaps we also teach
+`System.out.println()`.
+
+Does this mean, we fully attempt to explain the windows, views,
+perspectives, etc. in Eclipse, now?
+
+**Files:**
+
+  * [030-eclipse-overview.md](030-eclipse-overview.md)
+
+Advanced Programing
+-------------------
+
+The point of the pages beforehand is to get to the really good stuff.
+
 ### Unit Testing
 
 The unit testing needs a function that *looks right*, but is actually
@@ -165,13 +171,8 @@ So the previous page really needs to move directly into this one.
 
 **Files:**
 
-  * [045-java-unit-tests-1.md](045-java-unit-tests-1.md)
+  * [040-java-unit-tests.md](040-java-unit-tests.md)
   * `SimpleRobotTest.java`
-
-Advanced Programing (for the win)
--------------------
-
-The point of the pages beforehand is to get to the really good stuff.
 
 ### Git
 

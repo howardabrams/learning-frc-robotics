@@ -80,107 +80,52 @@ void step() {
 }
 ```
 
-When you re-run your `MyGame`, you'll see the robot slowly crash into
-the wall on the right side of the field. That's progress.
+When you re-run your `MyGame` code, you'll see the robot slowly crash
+into the wall on the right side of the field. That's progress.
 
 Let's have it crash into a different wall.
 
-Writing a Better Move
+Shall We Turn?
 ----------------------------------------------------------------------
 
-Let's get our robot to move based on the value of the `direction`
-field variable.  For instance, if `direction` was set to `45` (for
-45°), the robot should move to the north *and* east.
-How much should we change the `x` and `y` field variables?
-If the `x` and `y` field variables changed by the same amount, the
-robot would move at a 45° angle.  While 45° is quite straightforward,
-60° or even -13° may be more of a challenge.
-
-Our pretend robots run around on a normal coordinate field (called a
-[Cartesian Coordinate System](https://en.wikipedia.org/wiki/Cartesian_coordinate_system)),
-so we can use *math* to figure out the change to the `x` and `y` field
-variables based on an arbitrary angle.
-
-> x + cos(direction) * amount
-
-> y + sin(direction) * amount
-
-This uses a little trigonometry to shift a robot from a specific *x*,
-*y* coordinate to another based on a particular angular direction and
-some amount using the [sine][sin] and [cosine][cos] math functions.
-
-To render these two math equations in our Java code, we would write a
-`move` method, like:
+We could create methods like `moveNorth` and `moveWest`, but would we
+really want to create `moveNorthWest` and `moveNorthNorthWest`? That
+seems be getting a bit silly.  Obviously our next feature we'd like to
+write is a `turn` method that would look something like:
 
 ```java
-void move (int amount) {
-  x = x + Math.cos(direction) * amount;
-  y = y + Math.sin(direction) * amount;
+void turn(angle) {
+  direction = direction + angle;
 }
 ```
 
-Notice the [sine][sin] and [cosine][cos] functions in Java, are
-located in `Math`, so that is why I needed to write `Math.sin` and
-`Math.cos`.
+Add that to your robot code.
 
-I suppose we should have a `turn` method to change the direction:
+Next, we could have a simple `move` method that used the current
+direction and move at any angle. But that method involves a bit of
+math, so I will save it for [the next chapter][023].
 
-```java
-void turn (int amount) {
-  direction = direction + amount;
-}
-```
-
-If you want a shortcut, adding a value to a variable, like `x`, you can write:
-
-```java
-x += 5
-```
-
-So our `turn` function could be:
-
-```java
-void turn (int amount) {
-  direction += amount;
-}
-```
-
-Crash into the Corner
-----------------------------------------------------------------------
-
-With our new methods, we can remove the `moveEast` method, and update
-our `step` method to crash our robot somewhere else:
-
-```java
-void step() {
-  move(3);
-  turn(3);
-}
-```
-
-When you run the `MyGame` program, you will see that for each forward
-movement, the robot also turns to the right, until it eventually
-crashes. Play around with the numbers, and get it turning in a
-circle. Notice that even driving in a circle, the robot's circular
-path will shift and eventually, it will run into a different wall. Why
-do you think that is the case?
 
 Summary
 ----------------------------------------------------------------------
 
 At this point, we have a pretend robot that can both position itself
-on a playing field, but can also change its direction and with a bit
-of trigonometry, it can also change its position along a path.
+on a playing field, but can also change its position along a
+path... pretty much just to the right, but we'll fix that.
 
-If you think about the pretend robot we've built, we really want to
-concentrate on the robot's behavior and not on the mechanics of the
-field's coordinate system. Features like the `x` and `y` fields and
-the `move` and `turn` methods, isn't something we should really
-concern ourselves. In [the next chapter][025], we'll show you how to
-jettison those details and let us concentrate on our robot's
-behavior... which is really our goal.
+Not only are we saving information in field variables, but we are
+changing those variables, and those changes affect the behavior.  The
+collection of values in all of a class' field variables is an object's
+*state*. For example, the `x`, `y` and `direction` fields in an
+instance of the `Robot` class (an object) determines where it will be
+shown on the field. If the `x` field variable was set to `-300`, the
+robot will be positioned off the screen and wouldn't be seen! We need
+to make sure a robot's *state* is always valid.
+
+Hrm... how would you think we could help guarantee that? Let's move on
+to the [next chapter][023] where we both create a `move` method that
+can position the robot based on its direction, but can also test to
+make sure our code is good.
 
   [020]: ../020-java-basics-1.md
-  [025]: ../025-java-basics-inheritance.md
-  [sin]: https://en.wikipedia.org/wiki/Trigonometric_functions#sine
-  [cos]: https://en.wikipedia.org/wiki/Trigonometric_functions#cosine
+  [023]: ../023-java-basics-unit-testing
