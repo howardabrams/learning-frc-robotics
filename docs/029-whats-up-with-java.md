@@ -16,8 +16,7 @@ after thes answers, they won't annoy you as much.
 
   All spaces are *optional*, so these lines are the same:
 
-   {% highlight python %}
-
+```python
     x = 1 + foo
     x=1+foo
 ```
@@ -29,22 +28,19 @@ after thes answers, they won't annoy you as much.
 
   Look at this code. Are we trying to assign a variable and call a function?
 
-   {% highlight python %}
-
+```python
     x = 1 + foo   bar()
 ```
 
   Or assign a variable the results of the function?
 
-  {% highlight python %}
-
+```python
     x = 1 + foobar()
 ```
 
   Java makes it clear by *terminating* all statements with a semi-colon:
 
-  {% highlight python %}
-
+```python
     x = 1 + foo;    bar();
 ```
 
@@ -56,15 +52,13 @@ after thes answers, they won't annoy you as much.
    Java evolved from a language where comments started
    with `/*` and ended with `*/ ` like:
 
-   {% highlight c %}
-
+```c
    /* This is a comment */
 ```
 
    This meant that they could easily go on multiple lines:
 
-   {% highlight c %}
-
+```c
    /*
          We can have a comment with lots of information.
        Even on multiple lines.
@@ -75,9 +69,8 @@ after thes answers, they won't annoy you as much.
    editors at that time didn't use multiple colors), so we lined up
    the asterisks:
 
-{% highlight c %}
-
-   /*
+```c
+/*
  *     We can have a comment with lots of information.
  *   Even on multiple lines.
  *              Like this.
@@ -87,8 +80,8 @@ after thes answers, they won't annoy you as much.
    Other languages need a single character, and comments go to the end
    of the line:
 
-   ```java
- // Each comment begins with two slashes
+```java
+// Each comment begins with two slashes
 // No ending character needed.
 ```
 
@@ -104,8 +97,8 @@ after thes answers, they won't annoy you as much.
    describe. **Note:** We document all our of functions as it makes
    debugging much easier.
 
-   ```java
- /*
+```java
+/*
  * Calculates and returns the nth factorial, where
  *      1! = 1, 2! = 2 * 1, 3! = 3 * 2 * 1, etc.
  * <b>Note:</b> large values of <code>n</code> may be too large
@@ -127,7 +120,7 @@ long fact(int n) {
 
    Suppose Jenny wrote this function to times a number by itself:
 
-    ```java
+```java
 int square(int n) {
   return n * n;
 }
@@ -136,16 +129,16 @@ int square(int n) {
    And Emma wrote this function to draw a square of a particular size
    where the mouse is located:
 
-   ```java
- int square(int size) {
+```java
+int square(int size) {
   graphicsPage.drawRectangle(mouse.x, mouse.y, size, size);
 }
 ```
 
    And you wrote this code:
 
-   ```java
- square(5);
+```java
+square(5);
 ```
 
    How does Java know what to do?
@@ -154,7 +147,7 @@ int square(int n) {
    Java uses `import` to give a *short name* to something by its *long name*.
    For instance...
 
-   ```java
+```java
 package org.usfirst.frc.team2733.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -170,11 +163,10 @@ class Robot extends IterativeRobot {
 
    We could have written:
 
-   ```java
+```java
  class Robot extends edu.wpi.first.wpilibj.IterativeRobot {
 ```
 
    But that is too long and Java is wordy enough.
-
 
  [020]: ../020-java-basics-1.md
